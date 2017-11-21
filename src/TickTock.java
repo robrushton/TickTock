@@ -84,18 +84,16 @@ public class TickTock {
         endTime = System.nanoTime();
         String dottedLine = "---------------------------------------------------------------------------------------\n";
         StringBuilder builder = new StringBuilder();
-        builder.append(dottedLine);
-        builder.append("TickTock Summary" + summaryName +"\n");
-        builder.append(dottedLine);
+        builder.append(dottedLine).append("TickTock Summary" + summaryName +"\n").append(dottedLine);
         long lastTime = startTime;
         for (String key : ticks.keySet()) {
             long nextTime = ticks.get(key);
             builder.append(key + ": " + decimalFormat.format((nextTime - lastTime) / unit.getDivisor()) + unit.toString() + "\n");
             lastTime = nextTime;
         }
-        builder.append(dottedLine);
-        builder.append("Total Runtime: " + decimalFormat.format((endTime - startTime) / unit.getDivisor()) + unit.toString() + "\n");
-        builder.append(dottedLine);
+        builder.append(dottedLine)
+                .append("Total Runtime: " + decimalFormat.format((endTime - startTime) / unit.getDivisor()) + unit.toString() + "\n")
+                .append(dottedLine);
         System.out.println(builder.toString());
     }
 
